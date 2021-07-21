@@ -23,6 +23,7 @@ pipelines:
         jobs:
           test:
             timeout: 0
+            elastic_profile_id: demo-app
             artifacts:
             - external:
                 configuration:
