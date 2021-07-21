@@ -4,7 +4,7 @@ pipelines:
     group: sample
     label_template: ${COUNT}
     lock_behavior: none
-    display_order: -1
+    display_order: 1
     materials:
       git-de25e05:
         git: https://github.com/khgong/test.git
@@ -23,10 +23,15 @@ pipelines:
         jobs:
           test:
             timeout: 0
+            artifacts:
+            - externale:
+                configuration:
+                  options:
+                    Image: 192.168.222.15:443/test/nginx
+                    Tag: latest
             tasks:
             - exec:
                 arguments:
-                - clean
-                - test
-                command: mvn
+                - -c
+                command: /bin/bash
                 run_if: passed
