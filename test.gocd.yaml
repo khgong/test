@@ -24,7 +24,7 @@ pipelines:
           test:
             timeout: 0
             artifacts:
-            - externale:
+            - external:
                 configuration:
                   options:
                     Image: 192.168.222.15:443/test/nginx
