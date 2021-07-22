@@ -27,7 +27,7 @@ pipelines:
             artifacts:
             - external:
                 id: nginx
-                sotre_id: khgong
+                store_id: khgong
                 configuration:
                   options:
                     Image: test/nginx
