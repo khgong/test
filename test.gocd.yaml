@@ -26,7 +26,8 @@ pipelines:
             elastic_profile_id: demo-app
             artifacts:
             - external:
-                id: 192.168.222.15:443
+                id: test
+                sotre_id: khgong
                 configuration:
                   options:
                     Image: test/nginx
@@ -34,6 +35,6 @@ pipelines:
             tasks:
             - exec:
                 arguments:
-                - -c
+                - kubectl apply -f nginx.yaml -n gocd
                 command: /bin/bash
                 run_if: passed
