@@ -5,7 +5,7 @@ pipelines:
     materials:
       backend:
         git: https://github.com/khgong/test.git
-        branch: master
+        branch: main
       stages:
         - Build_Demo_Project_Stage:
             clean_workspace: true
