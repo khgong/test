@@ -26,7 +26,7 @@ pipelines:
             elastic_profile_id: demo-app
             artifacts:
             - external:
-                id: test
+                id: nginx
                 sotre_id: khgong
                 configuration:
                   options:
