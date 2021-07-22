@@ -26,11 +26,11 @@ pipelines:
             elastic_profile_id: demo-app
             artifacts:
             - external:
-                id: bulletin-board
-                store_id: dockerhub
+                id: test
+                store_id: 192.168.222.15:443
                 configuration:
                   options:
-                    Image: 192.168.222.15:443/test/nginx
+                    Image: test/nginx
                     Tag: latest
             tasks:
             - exec:
