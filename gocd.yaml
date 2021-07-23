@@ -1,0 +1,41 @@
+curl -vi "[http://192.168.88.52:8153/go/api/elastic/profiles](http://192.168.88.52:8153/go/api/elastic/profiles)" \
+           -u "admin:dbsafer00" \
+           -H 'Accept: application/vnd.go.cd.v2+json' \
+           -H 'Content-Type: application/json' \
+           -X POST -d '{
+        "id": "goagent-1",
+        "plugin_id": "cd.go.contrib.elasticagent.kubernetes",
+        "cluster_profile_id": "k8-cluster-profile",
+        "properties": [
+          {
+            "key": "PodConfiguration",
+            "value": "apiVersion: v1
+kind: Pod
+metadata:
+  name: gocd-agent-{{ POD_POSTFIX }}
+  labels:
+    app: web
+spec:
+  serviceAccountName: default
+  containers:
+    - name: gocd-agent-container-{{ CONTAINER_POSTFIX }}
+      image: 192.168.222.15:443/test/gocd-agent-docker-dind:v21.2.0
+      volumeMounts:
+      - name: gocd-agent-ssh
+        mountPath: \"/home/go/.ssh\"
+        readOnly: true
+  volumes:
+  - name: gocd-agent-ssh
+    secret:
+      secretName: gocd-agent-ssh"
+          },
+          {
+            "key": "PodSpecType",
+            "value": "yaml"
+          },
+          {
+            "key": "Privileged",
+            "value": "true"
+          }
+        ]
+      }'
