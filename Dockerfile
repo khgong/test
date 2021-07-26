@@ -1,4 +1,4 @@
-FROM ubuntu:18.04
+FROM 192.168.222.15:443/test/ubuntu:18.04
 MAINTAINER kh <khgong@sysintec.co.kr>
 
 RUN \
